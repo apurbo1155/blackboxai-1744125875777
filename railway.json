@@ -1,0 +1,33 @@
+{
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@railway/node"
+    }
+  ],
+  "routes": [
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production",
+    "MONGODB_URI": {
+      "description": "MongoDB connection string",
+      "required": true,
+      "default": "mongodb://localhost:27017/realtime-docs"
+    },
+    "PORT": {
+      "description": "Port to run the application",
+      "value": "8000"
+    },
+    "ALLOWED_ORIGINS": {
+      "description": "Comma-separated list of allowed CORS origins",
+      "value": "https://*.railway.app,http://localhost:3000"
+    }
+  }
+}
